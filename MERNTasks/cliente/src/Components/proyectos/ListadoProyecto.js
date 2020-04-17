@@ -1,20 +1,28 @@
-import React, {useContext, useEffect} from 'react';
-import Proyecto from './Proyecto';
+import React, { useContext, useEffect } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import AlertaContext from '../../Context/alerta/alertaContext';
 import proyectoContext from '../../Context/proyectos/ProyectoContext';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import Proyecto from './Proyecto';
 
-const ListadoProyectos = () => {
+const ListadoProyecto = () => {
 
     // Obtenemos el state del context 
     
     const ProyectoContext = useContext(proyectoContext);
-    const {proyectos, obtenerProyectos} = ProyectoContext;
+    const {proyectos, obtenerProyectos, mensaje } = ProyectoContext;
+
+    const alertaContext = useContext(AlertaContext);
+    const {alerta, mostrarAlerta } = alertaContext
 
 
     useEffect(() => {
+
+        if ( mensaje ){
+            mostrarAlerta( mensaje.msg, mensaje.categoria )
+        }
        obtenerProyectos();
-        
-    }, []);
+    // eslint-disable-next-line    
+    }, [mensaje]);
 
     // revisamos que proyectos tiene contenido 
     if( proyectos.length === 0 ) return <p>No hay proyectos, comienza creando uno </p>;
@@ -24,10 +32,13 @@ const ListadoProyectos = () => {
  
     return ( 
         <ul className="listado-proyectos">
+
+        { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
+
             <TransitionGroup>
             {proyectos.map( proyecto => (
                 <CSSTransition
-                key={proyecto.id}
+                key={proyecto._id}
                 timeout={200}
                 className="proyecto"
                 >
@@ -42,4 +53,4 @@ const ListadoProyectos = () => {
      );
 }
  
-export default ListadoProyectos;
+export default ListadoProyecto;
