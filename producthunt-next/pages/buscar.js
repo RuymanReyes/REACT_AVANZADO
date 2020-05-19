@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../components/layout/Layout';
 import { useRouter } from 'next/router';
-import DetallesProducto from '../components/layout/DetallesProducto';
+import DetallesProducto from '../components/layout/DetalleProductos';
 import useProductos from '../hooks/useProductos';
 
 const Buscar = () => {

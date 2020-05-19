@@ -7,7 +7,7 @@ import { Formulario, Campo, InputSubmit, Error } from '../components/ui/Formular
 import firebase from '../firebase';
 
 // validaciones
-import useValidacion from '../Hooks/useValidación';
+import useValidacion from '../Hooks/useValidacion';
 import validarCrearCuenta from '../validacion/validarCrearCuenta';
 
 const STATE_INICIAL = {
