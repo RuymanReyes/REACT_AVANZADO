@@ -30,4 +30,4 @@ yarn-error.log*
 .env.production.local
 
 #Config Firebase 
-firebase/config.js
+/fireabse/config.js
