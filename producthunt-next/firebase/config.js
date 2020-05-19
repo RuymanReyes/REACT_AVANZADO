@@ -2,7 +2,7 @@ const firebaseConfig = {
   apiKey: "",
   authDomain: "",
   databaseURL: "",
-  projectId: "product-hunt-f7055",
+  projectId: "",
   storageBucket: "",
   messagingSenderId: "",
   appId: ""
